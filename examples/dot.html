@@ -4,6 +4,7 @@
     <title>Dot Plot</title>
     <script type="text/javascript" src="../deps/d3.v2.js"></script>
     <script type="text/javascript" src="../deps/Three.js"></script>
+    <script type="text/javascript" src="../deps/Stats.js"></script>
     <script type="text/javascript" src="../lib/d3-threeD.js"></script>
     <style type="text/css">
 
@@ -121,10 +122,21 @@ var vis = d3.select("body")
   .append3d("g")
     .attr("transform", "translate(" + p + "," + p + ")");
 
+/*
 vis.selectAll3d("sphere")
     .data(data)
   .enter().append3d("sphere")
     .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+*/
+
+vis.selectAll3d("path.dot")
+    .data(data)
+  .enter().append3d("path")
+    .attr("class", "dot")
+    .attr("stroke", function(d, i) { return color(i); })
+    .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; })
+    .attr("d", d3.svg.symbol()
+    .type(function(d, i) { return symbol(i); }));
 
     </script>
   </body>
