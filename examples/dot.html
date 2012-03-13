@@ -136,7 +136,7 @@ vis.selectAll3d("path.dot")
     .attr("stroke", function(d, i) { return color(i); })
     .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; })
     .attr("d", d3.svg.symbol()
-    .type(function(d, i) { return symbol(i); }));
+                 .type(function(d, i) { return symbol(i); }));
 
     </script>
   </body>
